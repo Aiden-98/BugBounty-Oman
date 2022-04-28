@@ -1,0 +1,70 @@
+{% load static %}
+
+
+   <!-- NAVBAR START -->
+   <nav class="navbar navbar-expand-lg py-lg-3 navbar-dark">
+    <div class="container">
+
+        <!-- logo -->
+        <a href="{% url 'index' %}" class="navbar-brand mr-lg-5">
+            <!-- <img src="{% static 'assets/images/logo.png' %}" alt="" class="logo-dark" height="18" /> -->
+            <img src="{% static 'images/Navbar_BugLogo_White.png' %}" alt="" class="logo-dark" height="18" style="width: 25%;
+            height: auto;"/>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="mdi mdi-menu"></i>
+        </button>
+
+        <!-- menus -->
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
+            <!-- left menu -->
+            <ul class="navbar-nav mr-auto align-items-center">
+
+
+
+      
+
+      
+          <li class="nav-item mx-lg-1"><a href="{% url 'index' %}" class="nav-link">Home</a></li>
+          <li class="nav-item mx-lg-1"><a href="#about" class="nav-link">About Us</a></li>
+          <li class="nav-item mx-lg-1"><a href="{% url 'reportbug' %}" class="nav-link">Report Bug</a></li>
+          <li class="nav-item mx-lg-1"><a href="#contact" class="nav-link">Contact Us</a></li>
+
+
+          {% if request.user.is_authenticated %}
+          <li class="nav-item mx-lg-1 dropdown">
+              <a href="#" class="nav-link dropdown__link"><b>{{request.user.first_name}}</b></a>
+              <div class="dropdown-content">
+                  {% if request.user.last_name == 'cy' %}
+                  <a href="{% url 'uprofile' %}" class="nav-link">My Account</a>
+                  <a href="{% url 'SR_Request' %}" class="nav-link">Display Requests</a>
+                  {% endif %}
+                  
+                  {% if request.user.last_name == 'org' %}
+                 <a href="{% url 'uprofile' %}" class="nav-link">My Account</a>
+                  <a href="{% url 'cuRequests' %}" class="nav-link">Create Requests</a>
+                  {% endif %}
+
+                  {% if request.user.last_name == 'admin' %}
+                 <a href="{% url 'adminp' %}" class="nav-link">Admin Panel</a>
+                  {% endif %}
+                  <a href="{% url 'logout' %}" class="nav-link">Logout</a>
+
+                <!-- <li class="dropdown__item"><a href="#" class="nav__link">About me</a></li> -->
+              </div>
+          </li>
+          {% else %}
+          <li class="nav-item mx-lg-1"><a href="{% url 'cylogin' %}" class="nav-link">Login/Sign Up</a></li>
+          {% endif %}
+
+            </ul>
+
+            
+
+        </div>
+    </div>
+</nav>
+<!-- NAVBAR END -->

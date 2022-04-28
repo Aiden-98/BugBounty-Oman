@@ -1,0 +1,185 @@
+{% extends 'main.html' %}
+{% block  header %}
+<style>
+
+
+h1 {
+  color: hsla(215, 5%, 10%, 1);
+  margin-bottom: 2rem;
+}
+section {
+  display: flex;
+  flex-flow: row wrap;
+}
+section > div {
+  flex: 1;
+  padding: 0.5rem;
+}
+input[type="radio"] {
+  display: none;
+  &:not(:disabled) ~ label {
+    cursor: pointer;
+  }
+  &:disabled ~ label {
+    color: hsla(150, 5%, 75%, 1);
+    border-color: hsla(150, 5%, 75%, 1);
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+}
+.label {
+  height: 100%;
+  display: block;
+  background: white;
+  border: 2px solid rgb(71, 63, 184);
+  border-radius: 20px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  //margin: 1rem;
+  text-align: center;
+  box-shadow: 0px 3px 10px -2px hsla(150, 5%, 65%, 0.5);
+  position: relative;
+}
+input[type="radio"]:checked + label {
+  background: rgb(47, 84, 206);
+  color: hsla(215, 0%, 100%, 1);
+  box-shadow: 0px 0px 20px hsla(241, 88%, 60%, 0.75);
+  &::after {
+    color: hsla(215, 5%, 25%, 1);
+    font-family: FontAwesome;
+    border: 2px solid hsla(150, 75%, 45%, 1);
+    content: "\f00c";
+    font-size: 24px;
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 50px;
+    width: 50px;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0px 2px 5px -2px hsla(0, 0%, 0%, 0.25);
+  }
+}
+input[type="radio"]#control_05:checked + label {
+  background: red;
+  border-color: red;
+}
+p {
+  font-weight: 900;
+}
+
+
+@media only screen and (max-width: 700px) {
+  section {
+    flex-direction: column;
+  }
+}
+
+</style>
+{% endblock header %}
+{% block body %} class="loading" data-layout="detached" data-layout-config='{"leftSidebarCondensed":false,"darkMode":false, "showRightSidebarOnStart": true}'
+{% endblock body %}
+{% block content %}
+
+
+       <!-- Pre-loader -->
+   <div id="preloader">
+    <div id="status">
+        <div class="bouncing-loader"><div ></div><div ></div><div ></div></div>
+    </div>
+</div>
+<!-- End Preloader-->
+
+
+
+
+
+                          <!-- <div class="row">
+                              <div class="col-xl-6">
+                                  <div class="form-group">
+                                      <form method="POST" action="{% url 'addSR' %}">
+                                        {% csrf_token %}
+                                        {% for field in form %}
+                                        {% if forloop.counter < 10 %}
+                                        <label for="projectname">{{field.label}}</label>
+                                        {{field}}
+                                        {% else %}
+                                        
+                                        {% endif %}
+                                        {% endfor %}
+                                        <input type="submit" class="btn btn-secondary btn-rounded" />
+                                      </form>
+                                  </div> -->
+
+                                  <div class="row" style="margin-left: auto;
+                                  margin-right: auto;">
+                                      <div class="col-md-4 card" style="margin-left: auto;
+                                      margin-right: auto;">
+                                        <div class="form-group ">
+                                          <br/>
+                                            <form method="POST" action="{% url 'addSR' %}">
+                                              {% csrf_token %}
+                                              
+                                                {% for field in form %}
+                                                
+                                                    {% if forloop.counter < 4 %}
+                                                  <label for="IDofInput">{{field.label}}</label> 
+                                                  {{field}}
+
+                                                    {% else %}
+                                                    <label for="IDofInput">{{field.label}}</label> 
+                                                    {{field}}
+                                                  {% endif %}
+                                                    
+                                                {% endfor %}
+
+                                                <br/><h3>Choose your package</h3>
+                                                <section>
+                                                  <div>
+                                                    <input type="radio" id="control_01" name="select" value="1" checked>
+                                                    <label for="control_01" class="label">
+                                                      <h2>Basic package</h2>
+                                                      <p>Your request will be available for a month <br/> <h3>50 R.O</h3></p>
+                                                    </label>
+                                                  </div>
+                                                  <div>
+                                                    <input type="radio" id="control_02" name="select" value="2">
+                                                    <label for="control_02" class="label">
+                                                      <h2>Advance package</h2>
+                                                      <p>Your request will be available for a 6 months<br/> <h3>150 R.O</h3></p>
+                                                    </label>
+                                                  </div>
+                                                  <div>
+                                                    <input type="radio" id="control_03" name="select" value="3">
+                                                    <label for="control_03" class="label">
+                                                      <h2>Legand package</h2>
+                                                      <p>Your request will be available for a Year<br/> <h3>250 R.O</h3></p>
+                                                    </label>
+                                                  </div>
+                                                
+                                                  
+                                                  </section>
+                                                                                      
+
+                                              <br/><input type="submit" class="btn btn-secondary btn-rounded" />
+                                            </form>
+                                        </div>
+
+                                 
+
+                                 
+
+                              </div> <!-- end col-->
+
+                             
+                          </div>
+                          <!-- end row -->
+
+
+          {% include 'footer.html' %}
+
+
+{% endblock %}

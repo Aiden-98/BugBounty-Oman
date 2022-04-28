@@ -1,0 +1,133 @@
+
+{% extends 'main.html' %}
+{% block body %} class="loading" data-layout="detached" data-layout-config='{"leftSidebarCondensed":false,"darkMode":false, "showRightSidebarOnStart": true}'
+{% endblock body %}
+{% block content %}
+
+
+ <!-- Pre-loader -->
+ <div id="preloader">
+    <div id="status">
+        <div class="bouncing-loader"><div ></div><div ></div><div ></div></div>
+    </div>
+</div>
+<!-- End Preloader-->
+
+
+          
+          <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <h4>Name:</h4>
+                                <p>{{obj.CuRes_Org_Name}}</p>
+
+                                <h4>Email:</h4>
+                                <p>{{obj.CuRes_Email}}</p>
+                            </div> <!-- end col-->
+                            <div class="col-xl-6">
+                                <h4>Contact Person:</h4>
+                                <p>{{obj.CuRes_Contact_Person}}</p>
+
+                                <h4>Phone:</h4>
+                                <p>{{obj.CuRes_Phone}}</p>
+
+                                <h4>Documents:</h4>
+                                {% if obj.CuRes_Documents %}
+                                <p><a href="{{obj.CuRes_Documents.url}}" download>{{obj.CuRes_Documents}}</a></p>
+                                {% endif %}
+                            </div>
+
+                            <div class="col-xl-6">
+                                <h4>Contact Designation:</h4>
+                                <p>{{obj.CuRes_Contact_Designation}}</p>
+
+                                <h4>Start Day:</h4>
+                                <p>{{obj.CuRes_Created}}</p>
+                            </div>
+                            <div class="col-xl-1">
+                                <img src="{{obj.CuRes_Profile_Image.url}}" alt="Admin" class="rounded-circle" width="150">
+                                </div>
+
+
+                               
+
+                               
+
+                            
+                           
+                        </div>
+                        <!-- end row -->
+
+                        <div class="row">
+                            <div class="col-xl-8">
+                                <h4>Description:</h4>
+                                <p>{{obj.CuRes_Description}}</p>
+                            </div>
+                            <div class="container">
+                                <form method="POST"  enctype="multipart/form-data">
+                                  {% csrf_token %}
+                                  <!-- {% for field in form %}
+                                  <label for="projectname">{{field.label}}</label>
+                                  {{field}}
+
+                                  {% endfor %} -->
+                                  <label for="projectname">Organization Sector</label>
+                                    {{form.CuRes_organization_Sector}}
+                                
+                                 <br/> <label for="projectname">Organization Status</label>
+                                  {{form.CuRes_Status}}
+                                  <br/> <label for="projectname">Note</label>
+                                  {{form.CuRes_Note}}
+                                  <br/><input type="submit" class="btn btn-secondary btn-rounded" />
+                            
+                                </form>
+                            </div>
+                        </div>
+                    </div> <!-- end card-body -->
+                    <table class="table table-centered mb-0">
+                        <thead class="">
+                            <tr>
+                                <th>Status</th>
+                                <th>Sector</th>
+                                <th>Note</th>
+                                <th>Created Date</th>
+                                <th>User Name</th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for cus_log in Cus_Logs_obj %}
+                            <tr>
+                              
+                                <td>{{cus_log.Cus_LOG_Status}}</td>
+                                <td>{{cus_log.Cus_LOG_Sector}}</td>
+                                <td>{{cus_log.Cus_LOG_Note}}</td>
+                                <td>{{cus_log.Cus_Created}}</td>
+                                <td>{{cus_log.Cus_LOG_User}}</td>
+
+
+                            
+                            </tr>
+                            {% endfor %}
+                           
+                        </tbody>
+                    </table>
+                    
+
+                </div> <!-- end card-->
+            </div> <!-- end col-->
+        </div>
+        <!-- end row-->
+
+
+
+
+
+
+
+{% endblock %}

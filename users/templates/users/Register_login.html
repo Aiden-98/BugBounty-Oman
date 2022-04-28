@@ -1,0 +1,180 @@
+{% extends 'main.html' %}
+{% load static %}
+  {% block body %} {% if page == 'login' %} class="loading authentication-bg" data-layout-config='{"darkMode":false}' {% else %} class="authentication-bg pb-0" data-layout-config='{"darkMode":false}' {% endif %}{% endblock body %}
+
+{% block content %}
+
+ <!-- Pre-loader -->
+ <div id="preloader">
+    <div id="status">
+        <div class="bouncing-loader"><div ></div><div ></div><div ></div></div>
+    </div>
+</div>
+<!-- End Preloader-->
+  
+ 
+                  {% if page == 'login' %}
+
+    <div class="account-pages mt-5 mb-5">
+      <div class="container">
+          <div class="row justify-content-center">
+              <div class="col-lg-5">
+                  <div class="card">
+
+                      <!-- Logo -->
+                      <div class="card-header pt-4 pb-4 text-center bg-primary">
+                          <a href="index.html">
+                              <span><img src="assets/images/logo.png" alt="" height="18"></span>
+                          </a>
+                      </div>
+
+                      <div class="card-body p-4">
+                          
+                          <div class="text-center w-75 m-auto">
+                              <h4 class="text-dark-50 text-center mt-0 font-weight-bold">Sign In</h4>
+                              <p class="text-muted mb-4">Enter your email address and password to access admin panel.</p>
+                          </div>
+
+                          <form method="POST">
+                            {% csrf_token %}
+
+                              <div class="form-group">
+                                  <label for="fullname">Username</label>
+                                  <input class="form-control" type="text" id="fullname" required="" placeholder="Enter your Username" name="username">
+                              </div>
+
+                              <div class="form-group">
+                                  <label for="password">Password</label>
+                                  <div class="input-group input-group-merge">
+                                      <input type="password" id="password" class="form-control" placeholder="Enter your password" name="password">
+                                      <div class="input-group-append" data-password="false">
+                                          <div class="input-group-text">
+                                              <span class="password-eye"></span>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <a href="{% url 'reset_password' %}" class="text-muted float-right"><small>Forgot your password?</small></a>
+
+                              </div>
+
+                              <div class="form-group mb-3">
+                                  <div class="custom-control custom-checkbox">
+                                      <input type="checkbox" class="custom-control-input" id="checkbox-signin" checked>
+                                      <label class="custom-control-label" for="checkbox-signin">Remember me</label>
+                                  </div>
+                              </div>
+
+                              <div class="form-group mb-0 text-center">
+                                  <button class="btn btn-primary" type="submit"> Log In </button>
+                              </div>
+
+                          </form>
+                      </div> <!-- end card-body -->
+                  </div>
+                  <!-- end card -->
+
+                  <div class="row mt-3">
+                      <div class="col-12 text-center">
+                          <p class="text-muted">Don't have an account? <a href="{% url 'cyReg' %}" class="text-muted ml-1"><b>Sign Up</b></a></p>
+                      </div> <!-- end col -->
+                  </div>
+                  <!-- end row -->
+
+              </div> <!-- end col -->
+          </div>
+          <!-- end row -->
+      </div>
+      <!-- end container -->
+  </div>
+  <!-- end page -->
+
+  <footer class="footer footer-alt">
+      2021©Bug Bounty Oman - BugBounty.om
+  </footer>
+                      
+                      
+                      {% else %}
+                    <div class="auth-fluid" style="background-image: url({% static 'images/bg-auth.jpg' %});">
+                      <!--Auth fluid left content -->
+                      <div class="auth-fluid-form-box">
+                          <div class="align-items-center d-flex h-100">
+                              <div class="card-body">
+          
+                                  <!-- Logo -->
+                                  <div class="auth-brand text-center text-lg-left">
+                                      <a href="index.html" class="logo-dark">
+                                          <span><img src="assets/images/logo-dark.png" alt="" height="18"></span>
+                                      </a>
+                                      <a href="index.html" class="logo-light">
+                                          <span><img src="assets/images/logo.png" alt="" height="18"></span>
+                                      </a>
+                                  </div>
+          
+                                  <!-- title-->
+                                  <h4 class="mt-0">Free Sign Up</h4>
+                                  <p class="text-muted mb-4">Don't have an account? Create your account, it takes less than a minute</p>
+          
+                                  <!-- form -->
+                                  <form method="POST">
+                                    {% csrf_token %}
+                                    {% for field in form %}
+                                    <br/>
+                                    <label for="form-group">{{field.label}}</label>
+                                    {{field}} 
+
+                                    {% if field.help_text %}
+                                    <small>{{ field.help_text }}</small>
+                                    {% endif %}
+
+                                    {% for error in field.errors %}
+                                    <p style="color: red;" >{{error}}</p>
+                                    {% endfor %}
+
+                                    <br/>
+                                    
+                                    {% endfor %}
+                                    
+                                      <div class="form-group">
+                                          <div class="custom-control custom-checkbox">
+                                              <input type="checkbox" class="custom-control-input" id="checkbox-signup">
+                                              <label class="custom-control-label" for="checkbox-signup">I accept <a href="javascript: void(0);" class="text-muted">Terms and Conditions</a></label>
+                                          </div>
+                                      </div>
+                                      <div class="form-group mb-0 text-center">
+                                          <button class="btn btn-primary btn-block" type="submit"><i class="mdi mdi-account-circle"></i> Sign Up </button>
+                                      </div>
+                                   
+                                  </form>
+                                  <!-- end form-->
+          
+                                  <!-- Footer-->
+                                  <footer class="footer footer-alt">
+                                      <p class="text-muted">Already have account? <a href="{% url 'cylogin' %}" class="text-muted ml-1"><b>Log In</b></a></p>
+                                  </footer>
+          
+                              </div> <!-- end .card-body -->
+                          </div> <!-- end .align-items-center.d-flex.h-100-->
+                      </div>
+                      <!-- end auth-fluid-form-box-->
+          
+                      <!-- Auth fluid right content -->
+                      <div class="auth-fluid-right text-center">
+                          <div class="auth-user-testimonial">
+                              <h2 class="mb-3">Cybersecurity Quote</h2>
+                              <p class="lead"><i class="mdi mdi-format-quote-open"></i> It takes 20 years to build a reputation and few minutes of cyber-incident to ruin it. <i class="mdi mdi-format-quote-close"></i>
+                              </p>
+                              <p>
+                                  - Stephane Nappo
+                              </p>
+                          </div> <!-- end auth-user-testimonial-->
+                      </div>
+                      <!-- end Auth fluid right content -->
+                  </div>
+                  <!-- end auth-fluid-->
+
+                  
+
+                    {% endif %}
+
+
+{% endblock %}

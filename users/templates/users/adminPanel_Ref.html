@@ -1,0 +1,496 @@
+{% extends 'main.html' %}
+
+{% block body %} class="loading" data-layout="detached" data-layout-config='{"leftSidebarCondensed":false,"darkMode":false, "showRightSidebarOnStart": true}'
+{% endblock body %}
+{% block content %}
+   <!-- Pre-loader -->
+   <div id="preloader">
+    <div id="status">
+        <div class="bouncing-loader"><div ></div><div ></div><div ></div></div>
+    </div>
+</div>
+<!-- End Preloader-->
+
+ <!-- Start Content-->
+ <div class="container-fluid">
+
+    <!-- Begin page -->
+    <div class="wrapper">
+
+        <div class="content-page">
+            <div class="content">
+                
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box">
+                 
+                            <h4 class="page-title">Admin panel</h4>
+                        </div>
+                    </div>
+                </div>     
+                <!-- end page title --> 
+
+                <div class="row">
+
+                    <div class="col-lg-6 col-xl-2">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-9">
+                                        <h5 class="text-muted font-weight-normal mt-0" title="Campaign Sent">CUSTOMERS ORGANIZATION</h5>
+                                        <h3 class="my-2 py-1">{{form_org.count}}</h3>
+                                        
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="text-right">
+                                            <div id="campaign-sent-chart" data-colors="#536de6"></div>
+                                        </div>
+                                    </div>
+                                </div> <!-- end row-->
+                            </div> <!-- end card-body -->
+                        </div> <!-- end card -->
+                    </div> <!-- end col -->
+
+                    <div class="col-lg-6 col-xl-2">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-9">
+                                        <h5 class="text-muted font-weight-normal mt-0 text-truncate" title="New Leads">Cybers</h5>
+                                        <h3 class="my-2 py-1">{{form_cy.count}}</h3>
+                                        <p class="mb-0 text-muted">
+                                        </p>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="text-right">
+                                            <div id="new-leads-chart" data-colors="#10c469"></div>
+                                        </div>
+                                    </div>
+                                </div> <!-- end row-->
+                            </div> <!-- end card-body -->
+                        </div> <!-- end card -->
+                    </div> <!-- end col -->
+
+                    <div class="col-lg-6 col-xl-2">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-9">
+                                        <h5 class="text-muted font-weight-normal mt-0 text-truncate" title="Deals">SERVICES REQUESTS</h5>
+                                        <h3 class="my-2 py-1">{{form_SR.count}}</h3>
+                                        <p class="mb-0 text-muted">
+                                        </p>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="text-right">
+                                            <div id="deals-chart" data-colors="#536de6"></div>
+                                        </div>
+                                    </div>
+                                </div> <!-- end row-->
+                            </div> <!-- end card-body -->
+                        </div> <!-- end card -->
+                    </div> <!-- end col -->
+
+                    <div class="col-lg-6 col-xl-2">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-9">
+                                        <h5 class="text-muted font-weight-normal mt-0" title="Booked Revenue">SERVICES REQUEST PARTICIPANT</h5>
+                                        <h3 class="my-2 py-1">{{form_SRP.count}}</h3>
+                                        <p class="mb-0 text-muted">
+                                        </p>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="text-right">
+                                            <div id="booked-revenue-chart" data-colors="#10c469"></div>
+                                        </div>
+                                    </div>
+                                </div> <!-- end row-->
+                            </div> <!-- end card-body -->
+                        </div> <!-- end card -->
+                    </div> <!-- end col -->
+                    
+                    <div class="col-lg-6 col-xl-2">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-9">
+                                        <h5 class="text-muted font-weight-normal mt-0 text-truncate" title="Booked Revenue">Awards</h5>
+                                        <h3 class="my-2 py-1">{{form_Awd.count}}</h3>
+                                        <p class="mb-0 text-muted">
+                                        </p>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="text-right">
+                                            <div id="booked-revenue-chart" data-colors="#10c469"></div>
+                                        </div>
+                                    </div>
+                                </div> <!-- end row-->
+                            </div> <!-- end card-body -->
+                        </div> <!-- end card -->
+                    </div> <!-- end col -->
+                </div>
+                <!-- end row -->
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                           
+
+                                    
+                                <h4 class="header-title mb-3">Cyber Res</h4>
+
+                                <div class="chart-content-bg">
+                                    <div class="row text-center">
+                                        <div class="col-md-12">
+                                            <table class="table mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>UserName</th>
+                                                        <th>Name</th>
+                                                        <th>Email</th>
+                                                        <th>Phone</th>
+                                                        <th>Status</th>
+                                                        <th>Documents</th>
+                                                        <th>Start Date</th>
+                                                    </tr>
+                                                </thead>
+                                                
+                                                <tbody>
+                                                    {% for cy in form_cy %}
+                                                    <tr>
+                                                        <td>
+                                                            <a href="{% url 'admincy' cy.CyRes_ID %}" class="" ><i class=""></i>{{cy.CyRes_UserName}}</a>
+
+                                                        </td>
+                                                        <td>{{cy.CyRes_Name}}</td>
+                                                        <td>{{cy.CyRes_Email}}</td>
+                                                        <td>{{cy.CyRes_Phone}}</td>
+                                                        {% if cy.CuRes_Status == 'accepted' %}
+                                                        <td ><span class="badge badge-outline-success">{{cy.CuRes_Status}}</span></td>
+                                                        {% endif %}
+
+                                                        {% if cy.CuRes_Status == 'Pending' %}
+                                                        <td ><span class="badge badge-outline-warning">{{cy.CuRes_Status}}</span></td>
+                                                        {% endif %}
+
+                                                        {% if cy.CuRes_Status == 'Rejected' %}
+                                                        <td ><span class="badge badge-outline-danger">{{cy.CuRes_Status}}</span></td>
+                                                        {% endif %}
+
+                                                        {% if cy.CuRes_Status == empty %}
+                                                        <td ><span class="badge badge-outline-dark">Unkown</span></td>
+                                                        {% endif %}
+                                                        <td>
+                                                            {% if cy.CyRes_Documents != '' %}
+                                                            <a href="{{cy.CyRes_Documents.url}}" download>{{cy.CyRes_Documents}}</a>
+                                                            {% endif %}
+                                                        </td>
+                                                        <td>{{cy.CyRes_Start_Date}}</td>
+
+                                                    </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="dash-revenue-chart" class="apex-charts" data-colors="#10c469,#ff5b5b"></div>
+
+                                
+                            </div>
+                            <!-- end card body-->
+                        </div>
+                        <!-- end card -->
+                    </div>
+                    <!-- end col-->
+
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                             
+                                
+                                <h4 class="header-title mb-3">Customers Organization</h4>
+
+                                <div class="chart-content-bg">
+                                    <div class="row text-center">
+                                        <div class="col-md-12">
+                                            <table class="table mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Organization Name</th>
+                                                        <th>Email</th>
+                                                        <th>Phone</th>
+                                                        <th>Status</th>
+                                                        <th>Sector</th>
+                                                        <th>Documents</th>
+                                                        <th>Start Date</th>
+                                                    </tr>
+                                                </thead>
+                                            
+                                                <tbody>
+                                                    {% for org in form_org %}
+                                                    <tr>
+                                                        <td>
+                                                            <a href="{% url 'admincu' org.CuRes_ID %}" class="" ><i class=""></i>{{org.CuRes_Org_Name}}</a>
+
+                                                        </td>
+                                                        <td>{{org.CuRes_Email}}</td>
+                                                        <td>{{org.CuRes_Phone}}</td>
+
+                                                        {% if org.CuRes_Status == 'accepted' %}
+                                                        <td ><span class="badge badge-outline-success">{{org.CuRes_Status}}</span></td>
+                                                        {% endif %}
+
+                                                        {% if org.CuRes_Status == 'Pending' %}
+                                                        <td ><span class="badge badge-outline-warning">{{org.CuRes_Status}}</span></td>
+                                                        {% endif %}
+
+                                                        {% if org.CuRes_Status == 'Rejected' %}
+                                                        <td ><span class="badge badge-outline-danger">{{org.CuRes_Status}}</span></td>
+                                                        {% endif %}
+
+                                                        {% if org.CuRes_Status == empty %}
+                                                        <td ><span class="badge badge-outline-dark">Unkown</span></td>
+                                                        {% endif %}
+
+                                                        <td>{{org.CuRes_organization_Sector}}</td>
+                                                        <td>
+                                                        {% if org.CuRes_Documents != '' %}
+                                                        <a href="{{org.CuRes_Documents.url}}" download>{{org.CuRes_Documents}}</a>
+                                                        {% endif %}
+                                                    </td>
+                                                        <td>{{org.CuRes_Created}}</td>
+                                                        
+                                                    </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="dash-revenue-chart" class="apex-charts" data-colors="#10c469,#ff5b5b"></div>
+
+                            </div>
+                            <!-- end card body-->
+                        </div>
+                        <!-- end card -->
+                    </div>
+                    <!-- end col-->
+                </div>
+                <!-- end row-->
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                           
+
+                                    
+                                <h4 class="header-title mb-3">Services Requests</h4>
+
+                                <div class="chart-content-bg">
+                                    <div class="row text-center">
+                                        <div class="col-md-12">
+                                            <table class="table mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Organization Name</th>
+                                                        <th>Service Type</th>
+                                                        <th>URL</th>
+                                                        <th>Status</th>
+                                                        <th>Low awards</th>
+                                                        <th>Medium awards</th>
+                                                        <th>High awards</th>
+                                                        <th>Critical awards</th>
+                                                        <th>Start Date</th>
+                                                    </tr>
+                                                </thead>
+                                            
+                                                <tbody>
+                                                    {% for sr in form_SR %}
+                                                    <tr>
+                                                        <td>
+                                                            <a href="{% url 'adminsr' sr.SR_ID %}" class="" ><i class=""></i>{{sr.CuRes_ID.CuRes_Org_Name}}</a>
+
+                                                        </td>
+                                                        <td>{{sr.SR_Type}}</td>
+                                                        <td>{{sr.SR_URL}}</td>
+                                                        <td>{{sr.SR_Approval_status}}</td>
+                                                        <td>{{sr.SR_Low_Award}}</td>
+                                                        <td>{{sr.SR_Medium_Award}}</td>
+                                                        <td>{{sr.SR_High_Award}}</td>
+                                                        <td>{{sr.SR_Critical_Award}}</td>
+                                                        <td>{{sr.SR_Created}}</td>
+
+                                                    </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="dash-revenue-chart" class="apex-charts" data-colors="#10c469,#ff5b5b"></div>
+
+                                
+                            </div>
+                            <!-- end card body-->
+                        </div>
+                        <!-- end card -->
+                    </div>
+                    <!-- end col-->
+
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                             
+                                
+                                <h4 class="header-title mb-3">Services Request Participant</h4>
+
+                                <div class="chart-content-bg">
+                                    <div class="row text-center">
+                                        <div class="col-md-12">
+                                            <table class="table mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Organization Name</th>
+                                                        <th>Cyber Res</th>
+                                                        <th>Report</th>
+                                                        <th>Status</th>
+                                                        <th>Date</th>
+                                                        <th>Add award</th>
+
+                                                    </tr>
+                                                </thead>
+                                            
+                                                <tbody>
+                                                    {% for srp in form_SRP %}
+                                                    <tr>
+                                                        <td>
+                                                            <a href="{% url 'adminsrp' srp.SRP_ID %}" class="" ><i class=""></i>{{srp.SR_ID.CuRes_ID.CuRes_Org_Name}}</a>
+
+                                                        </td>
+                                                        <td>{{srp.CyRes_ID.CyRes_UserName}}</td>
+                                                        <td>
+                                                        {% if srp.SRP_Report != '' %}
+                                                        <a href="{{srp.SRP_Report.url}}" download>{{srp.SRP_Report}}</a>
+                                                        {% endif %}
+                                                    </td>
+                                                        <td>{{srp.SRP_Status}}</td>
+                                                        <td>{{srp.SRP_Created}}</td>
+                                                        <td>
+                                                            <p class="mb-2 font-weight-bold"><a href="{% url 'addawd' srp.SRP_ID %}" class="btn btn-danger btn-rounded mb-3" style="background-color: #536de6;border-color: #536de6;"><i class=""></i>+ Add award</a></span></p>
+                                                        </td>
+
+                                                        
+                                                    </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <!-- Start Numbring -->
+
+                                        
+
+                                        <!-- End Numbering -->
+
+                                    </div>
+                                </div>
+
+                                <div id="dash-revenue-chart" class="apex-charts" data-colors="#10c469,#ff5b5b"></div>
+
+                            </div>
+                            <!-- end card body-->
+                        </div>
+                        <!-- end card -->
+                    </div>
+                    <!-- end col-->
+
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                             
+                                
+                                <h4 class="header-title mb-3">Awards</h4>
+
+                                <div class="chart-content-bg">
+                                    <div class="row text-center">
+                                        <div class="col-md-12">
+                                            <table class="table mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Organization Name</th>
+                                                        <th>Cyber res</th>
+                                                        <th>Prize</th>
+                                                        <th>Date</th>
+                                                   
+                                                    </tr>
+                                                </thead>
+                                            
+                                                <tbody>
+                                                    {% for awr in form_Awd %}
+                                                    <tr>
+                                                        <td>{{awr.SRP_ID.SR_ID.CuRes_ID.CuRes_Org_Name}}</td>
+                                                        <td>{{awr.SRP_ID.CyRes_ID.CyRes_UserName}}</td>
+                                                        <td>{{awr.SRA_prize}}</td>
+                                                        <td>{{awr.SRA_Created}}</td>
+
+                                                    </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="dash-revenue-chart" class="apex-charts" data-colors="#10c469,#ff5b5b"></div>
+
+                            </div>
+                            <!-- end card body-->
+                        </div>
+                        <!-- end card -->
+                    </div>
+                    <!-- end col-->
+                </div>
+                <!-- end row-->
+                
+            </div> <!-- End Content -->
+
+            <!-- Footer Start -->
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6">
+                            2018 - 2020 © Hyper - Coderthemes.com
+                        </div>
+                        <div class="col-md-6">
+                            <div class="text-md-right footer-links d-none d-md-block">
+                                <a href="javascript: void(0);">About</a>
+                                <a href="javascript: void(0);">Support</a>
+                                <a href="javascript: void(0);">Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!-- end Footer -->
+
+        </div> <!-- content-page -->
+
+    </div> <!-- end wrapper-->
+</div>
+<!-- END Container -->
+
+
+
+
+{% include 'TableNo.html' %}
+
+{% endblock %}

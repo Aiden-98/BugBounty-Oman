@@ -1,0 +1,53 @@
+{% extends 'main.html' %}
+{% block body %} class="loading" data-layout="detached" data-layout-config='{"leftSidebarCondensed":false,"darkMode":false, "showRightSidebarOnStart": true}'
+{% endblock body %}
+{% block content %}
+
+ <!-- Pre-loader -->
+ <div id="preloader">
+    <div id="status">
+        <div class="bouncing-loader"><div ></div><div ></div><div ></div></div>
+    </div>
+</div>
+<!-- End Preloader-->
+
+
+
+          
+
+                        <div class="row" style="margin-left: auto;
+                        margin-right: auto;">
+                            <div class="col-md-4" style="margin-left: auto;
+                            margin-right: auto;">
+                        
+                                <div class="form-group">
+                                    <br/>
+                                    <form method="POST" action="{% url 'profile' %}" enctype="multipart/form-data">
+                                      {% csrf_token %}
+                                      {% for field in form %}
+                                      {% if forloop.counter < 20 %}
+                                      <label for="projectname">{{field.label}}</label>
+                                      {{field}}
+                                      {% else %}
+                                      
+                                      {% endif %}
+                                      {% endfor %}
+                                      <br/><input type="submit" class="btn btn-secondary btn-rounded" />
+                                    </form>
+                                </div>
+
+                               
+
+                               
+
+                            </div> <!-- end col-->
+
+                           
+                        </div>
+                        <!-- end row -->
+
+     
+
+                        {% include 'footer.html' %}
+
+{% endblock %}

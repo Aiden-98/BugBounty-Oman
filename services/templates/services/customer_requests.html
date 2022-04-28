@@ -1,0 +1,191 @@
+{% extends 'main.html' %}
+{% block body %} class="loading" data-layout="detached" data-layout-config='{"leftSidebarCondensed":false,"darkMode":false, "showRightSidebarOnStart": true}'
+{% endblock body %}
+{% block content %}
+
+ <!-- Pre-loader -->
+ <div id="preloader">
+    <div id="status">
+        <div class="bouncing-loader"><div ></div><div ></div><div ></div></div>
+    </div>
+</div>
+<!-- End Preloader-->
+
+
+        <!-- Start Content-->
+        <div class="container-fluid">
+
+            <!-- Begin page -->
+            <div class="wrapper">
+
+                                    <!-- Sidebar -left -->
+
+                </div>
+                <!-- Left Sidebar End -->
+
+                <div class="content-page">
+                    <div class="content">
+                        
+                        <!-- start page title -->
+                        <div class="row">
+
+            <!-- <ul>
+                {% for sr in SRQ %}
+
+                {% if request.user.customerprofile.CuRes_ID == sr.CuRes_ID.CuRes_ID %}
+                <li>Title: <a href="{% url 'payment' sr.SR_ID %}"> {{sr}} </a></li>
+                {% endif %}
+          
+
+
+  
+              
+                {% endfor %}
+            </ul> -->
+            {% if request.user.customerprofile.CuRes_Status == 'accepted' %}
+
+            <div class="col-12">
+                <div class="page-title-box">
+                   
+                    <h4 class="page-title">Company requests</h4>
+                </div>
+            </div>
+        </div>     
+        <!-- end page title --> 
+
+        <div class="row mb-2">
+            <div class="col-sm-4">
+                <a href="{% url 'addSR' %}" class="btn btn-danger btn-rounded mb-3"><i class="mdi mdi-plus"></i> Create Request</a>
+            </div>
+            <div class="col-sm-8">
+               
+            </div><!-- end col-->
+        </div> 
+        <!-- end row-->
+
+        <div class="row">
+
+            {% for sr in SRQ %}
+
+            {% if request.user.customerprofile.CuRes_ID == sr.CuRes_ID.CuRes_ID %}
+        
+
+            <!-- srart col -->
+            <div class="col-md-6 col-xl-3"> <!-- srart col -->
+                <!-- project card -->
+                <div class="card d-block">
+                    <div class="card-body">
+                       
+                        <!-- project title-->
+                        <h4 class="mt-0">
+                            <a href="{% url 'singleSR' sr.SR_ID %}" class="text-title">{{sr.CuRes_ID.user.first_name}}</a>
+                        </h4>
+
+                        {% if sr.SR_Approval_status == 'Accepted' %}
+                        <div class="badge badge-success badge-pill">Accepted</div>
+                        {% endif %}
+
+                        {% if sr.SR_Approval_status == 'Witing_for_Pyament' %}
+                        <div class="badge badge-primary badge-pil">Witing for Payment</div>
+                        {% endif %}
+
+                        {% if sr.SR_Approval_status == 'Pending' %}
+                        <div class="badge badge-secondary badge-pill">Pending</div>
+                        {% endif %}
+
+                        {% if sr.SR_Approval_status == 'Rejected' %}
+                        <div class="badge badge-danger badge-pill">Rejected</div>
+                        {% endif %}
+
+                        {% if sr.SR_Approval_status == 'Closed' %}
+                        <div class="badge badge-light badge-pill">Closed</div>
+                        {% endif %}
+
+                        <p class="text-muted font-13 mb-3">{{sr.SR_Description}}<a href="{% url 'singleSR' sr.SR_ID %}" class="font-weight-bold text-muted">view more</a>
+                        </p>
+
+                        <!-- project detail-->
+                        <p class="mb-1">
+                            <span class="pr-2 text-nowrap mb-2 d-inline-block">
+                                <!-- <i class="mdi mdi-format-list-bulleted-type text-muted"></i> -->
+                                <p><b>Created Date:</b> {{sr.SR_Created}}</p>
+                            </span>
+                            <span class="text-nowrap mb-2 d-inline-block">
+                                <i class="mdi mdi-comment-multiple-outline text-muted"></i>
+                                <b>{{sr.CuRes_ID.CuRes_organization_Sector}}</b>
+                            </span>
+                        </p>
+                      
+                    </div> <!-- end card-body-->
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item p-3">
+                            <!-- project progress-->
+                            {% if sr.SR_Approval_status == 'Witing_for_Pyament' %}
+                            <!-- <p class="mb-2 font-weight-bold"><a href="{% url 'payment' sr.SR_ID %}" class="btn btn-danger btn-rounded mb-3" style='background-color:#536de6; border-color: #536de6;' ><i class=""></i>Pay</a></span></p> -->
+                            {% endif %}
+                            <div class="progress progress-sm">
+
+                                {% if sr.SR_Approval_status == 'Accepted'  %}
+                                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%; background-color:#10c469">
+                                {% endif %}
+
+                                {% if sr.SR_Approval_status == 'Witing_for_Pyament'  %}
+                                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%; background-color:#536de6">
+                                {% endif %}
+
+                                {% if sr.SR_Approval_status == 'Pending'  %}
+                                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%; background-color:#6c757d">
+                                {% endif %}
+                                
+                                {% if sr.SR_Approval_status == 'Rejected'  %}
+                                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%; background-color:#ff5b5b">
+                                {% endif %}
+
+                                {% if sr.SR_Approval_status == 'Closed'  %}
+                                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%; background-color:#eef2f7">
+                                {% endif %}
+
+                                </div><!-- /.progress-bar -->
+                            </div><!-- /.progress -->
+                        </li>
+                    </ul>
+                </div> <!-- end card-->
+            </div> <!-- end col -->
+
+            {% endif %}
+      
+
+
+
+          
+            {% endfor %}
+
+            {% else %}
+
+                    <div class="container">
+
+                        <h1 class="text-error mt-4">Your profile under review</h1>
+                        <!-- <p class="text-muted mt-3">Why not try refreshing your page? or you can contact <a href="" class="text-muted"><b>Support</b></a></p> -->
+
+                        <a class="btn btn-info mt-3" href="{% url 'index' %}"><i class="mdi mdi-reply"></i> Return Home</a>
+                    </div>
+      
+             {% endif %}              
+                           
+                            
+                          
+                            
+                        </div>
+                        <!-- end row-->
+
+                      
+                        
+                    </div> <!-- End Content -->
+
+                    </div>
+                    </div>
+
+                    {% include 'footer.html' %}
+
+
+{% endblock %}

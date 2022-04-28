@@ -1,0 +1,158 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block body %}class="loading" data-layout="detached" data-layout-config='{"leftSidebarCondensed":false,"darkMode":false, "showRightSidebarOnStart": true}'
+{% endblock body %}
+{% block content %}
+
+
+ <!-- Pre-loader -->
+ <div id="preloader">
+    <div id="status">
+        <div class="bouncing-loader"><div ></div><div ></div><div ></div></div>
+    </div>
+</div>
+<!-- End Preloader-->
+
+
+ <!-- project card -->
+ <div class="card d-block">
+  <div class="card-body">
+ 
+      <!-- project title-->
+      <h3 class="mt-0">
+        {{obj.SR_ID.CuRes_ID.user.first_name}}
+      </h3>
+<br/>
+      <h5>Request Details:</h5>
+
+      <p class="text-muted mb-2">
+        {{obj.SR_ID.SR_Description}}
+      </p>
+
+      <div class="row" style="margin-left: auto;
+      margin-right: auto;">
+          <h5>Website Link: <span style="color: cornflowerblue;">{{obj.SR_ID.SR_URL}}</span></h5>
+      </div>
+  
+
+      <div class="row" style="margin-left: auto;
+      margin-right: auto;">
+          <div class="col-md-4">
+              <div class="mb-4">
+                  <h5>Posted Date</h5>
+                  <p>{{obj.SR_ID.SR_Created}}</p>
+              </div>
+          </div>
+          <div class="col-md-4">
+              <div class="mb-4">
+                  <h5>Sector</h5>
+                  <p>{{obj.SR_ID.CuRes_ID.CuRes_organization_Sector}}</p>
+              </div>
+          </div>
+          <div class="col-md-4">
+            <div class="mb-4">
+               
+                    <br/>
+            </div>
+        </div>
+
+          <div class="col-md-6" style="margin-left: auto;
+          margin-right: auto;">
+              <div class="mb-4">
+
+                <table class="table table-centered mb-0">
+                    <thead>
+                        <tr>
+                            <th class="mdi mdi-circle text-success">Low</th>
+                            <th class="mdi mdi-circle text-info">Meduim</th>
+                            <th class="mdi mdi-circle text-warning">High</th>
+                            <th class="mdi mdi-circle text-danger" >Crtical</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><i ></i>{{obj.SR_ID.SR_Low_Award}} R.O</td>
+                            <td><i ></i>{{obj.SR_ID.SR_Medium_Award}} R.O</td>
+                            <td><i ></i>{{obj.SR_ID.SR_High_Award}} R.O</td>
+                            <td><i ></i>{{obj.SR_ID.SR_Critical_Award}} R.O</td>
+
+                        </tr>
+                      
+                    </tbody>
+                </table>
+                
+                
+              </div>
+          </div>
+      </div>
+
+      
+
+<div class="row" style="margin-left: auto;
+margin-right: auto;">
+    <div class="col-md-2" style="margin-left: auto;
+    margin-right: auto;">
+      <div class="custom-file">
+        <div class="mb-4">
+            <h3>Report details</h3>
+
+       
+        </div>
+      </div>
+    </div>
+        </div>
+
+        
+    
+
+
+    </div>
+    <div class="col-xl-5" style="margin-left: auto;
+    margin-right: auto;">
+                  <h5>Submitted Date</h5>
+                  <p>{{obj.SRP_Created}}</p>
+
+                  <h5>Title</h5>
+                  <p>{{obj.SRP_Title}}</p>
+
+                  <h5>Description</h5>
+                  <p>{{obj.SRP_Description|linebreaks}}</p>
+
+                  <h5>Report</h5>
+                  {% if obj.SRP_Report != '' %}
+                  <p><a href="{{obj.SRP_Report.url}}" download>{{obj.SRP_Report}}</a></p>
+                    {% endif %}
+                  <h5>Degree of Danger</h5>
+
+                  {% if obj.SRP_Danger == 'Low' %}
+                  <h5 class="mdi mdi-circle text-success">Low</h5>                  
+                  {% endif %}
+
+                  {% if obj.SRP_Danger == 'Medium' %}
+                  <h5 class="mdi mdi-circle text-info">Medium</h5>                  
+                  {% endif %}
+
+                  {% if obj.SRP_Danger == 'High' %}
+                  <h5 class="mdi mdi-circle text-warning">High</h5>                  
+                  {% endif %}
+
+                  {% if obj.SRP_Danger == 'Critical' %}
+                  <h5 class="mdi mdi-circle text-danger">Critical</h5>                  
+                  {% endif %}
+    </div>
+
+    
+
+</div> <!-- end card-body-->
+  
+</div> <!-- end card-->
+
+
+
+<!-- plugin js -->
+<script src="{% static 'assets/js/vendor/dropzone.min.js' %}"></script>
+<!-- init js -->
+<script src="{% static 'assets/js/ui/component.fileupload.js' %}"></script>
+{% include 'footer.html' %}
+
+{% endblock %}

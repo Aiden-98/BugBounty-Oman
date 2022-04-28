@@ -1,0 +1,71 @@
+{% load static %}
+
+
+   <!-- NAVBAR START -->
+   <!-- <nav class="navbar navbar-expand-lg py-lg-3 navbar-dark" style="background: rgba( 78, 99, 189, 0.90 ); -->
+    <nav class="navbar navbar-expand-lg py-lg-3 navbar-dark" style="background: #37517e;
+   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+   backdrop-filter: blur( 17.0px );
+   -webkit-backdrop-filter: blur( 17.0px );">
+    <div class="container ">
+
+        <!-- logo -->
+        <a href="{% url 'index' %}" class="navbar-brand mr-lg-5">
+            <!-- <img src="{% static 'assets/images/logo.png' %}" alt="" class="logo-dark" height="18" /> -->
+            <img src="{% static 'images/Navbar_BugLogo_White.png' %}" alt="" class="logo-dark" height="18" style="width: 25%;
+            height: auto;"/>
+
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="mdi mdi-menu"></i>
+        </button>
+
+        <!-- menus -->
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
+            <!-- left menu -->
+            <ul class="navbar-nav mr-auto align-items-center " style="justify-content: space-evenly !important;">
+
+
+
+      
+
+      
+
+          <li class="nav-item mx-lg-1"><a href="{% url 'index' %}" class="nav-link">Home</a></li>
+
+
+          {% if request.user.is_authenticated %}
+
+            <!-- <li class="nav-item mx-lg-1"><a href="#" class="nav-link dropdown__link">{{request.user.first_name}}</a></li> -->
+                  {% if request.user.last_name == 'cy' %}
+                  <li class="nav-item mx-lg-1"><a href="{% url 'uprofile' %}" class="nav-link">My Account</a></li>
+                  <li class="nav-item mx-lg-1"><a href="{% url 'SR_Request' %}" class="nav-link">Display Requests</a></li>
+                  {% endif %}
+                  
+                  {% if request.user.last_name == 'org' %}
+                  <li class="nav-item mx-lg-1"><a href="{% url 'uprofile' %}" class="nav-link">My Account</a></li>
+                  <li class="nav-item mx-lg-1"><a href="{% url 'cuRequests' %}" class="nav-link">Create Requests</a></li>
+                  {% endif %}
+
+                  {% if request.user.last_name == 'admin' %}
+                  <li class="nav-item mx-lg-1"><a href="{% url 'adminp' %}" class="nav-link">Admin Panel</a></li>
+                  {% endif %}
+                  <li class="nav-item mx-lg-1"><a href="{% url 'logout' %}" class="nav-link">Logout</a></li>
+
+                <!-- <li class="dropdown__item"><a href="#" class="nav__link">About me</a></li> -->
+          {% else %}
+          <li class="nav-item mx-lg-1"><a href="{% url 'cylogin' %}" class="nav-link">Login/Sign Up</a></li>
+          {% endif %}
+
+            </ul>
+            {% if request.user.is_authenticated %}
+            <p style="color:beige">Welcome <b>{{request.user.first_name}}</b></p>
+            {% endif %}
+
+        </div>
+    </div>
+</nav>
+<!-- NAVBAR END -->

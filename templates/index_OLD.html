@@ -1,0 +1,261 @@
+{% extends 'main_index.html' %}
+{% load static %}
+
+{% block content %}
+
+ <!-- Pre-loader -->
+ <div id="preloader">
+    <div id="status">
+        <div class="bouncing-loader"><div ></div><div ></div><div ></div></div>
+    </div>
+</div>
+<!-- End Preloader-->
+
+
+ <!-- START HERO -->
+ <section class="hero-section">
+  <div class="container">
+      <div class="row align-items-center">
+          <div class="col-md-5">
+              <div class="mt-md-4">
+                
+                  <h2 class="text-white font-weight-normal mb-4 mt-3 hero-title">
+                    Bug Bounty Oman 
+                  </h2>
+
+                  <p class="mb-4 font-16 text-white-50">Established in 2021 under the 
+                    umbrella of the Ministry of Transport, Communications, 
+                    and Information Technology (MTC). It is the first of its 
+                    kind in Oman and the second in the Middle East, which 
+                    connects security researchers with enterprises. The 
+                    security researchers shall be able to identify cyber 
+                    threats and vulnerabilities and accordingly produce 
+                    reports to the enterprises to implement gap closures 
+                    plans.</p>
+
+                  <a href="{% url 'cyReg' %}" target="_blank" class="btn btn-success">Reigster <i
+                          class="mdi mdi-arrow-right ml-1"></i></a>
+              </div>
+          </div>
+          <div class="col-md-5 offset-md-2">
+              <div class="text-md-right mt-3 mt-md-0">
+                  <img src="{% static 'images/Logo.png' %}" alt="" class="img-fluid" style="width: 70%;
+                  height: auto;" />
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+<!-- END HERO -->
+
+
+
+
+<!-- START FEATURES 2 -->
+<section class="py-5" id="about">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-12">
+              <div class="text-center" >
+                  <h1>About Us</h1>
+
+              </div>
+          </div>
+      </div>
+      <div class="row mt-2 py-5 align-items-center">
+          <div class="col-lg-5">
+              <img src="{% static 'assets/images/features-1.svg' %}" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-6 offset-lg-1">
+              <h3 class="font-weight-normal">Bug Bounty Oman platform aims to connect 
+                national talent platforms its of security 
+                researchers with state-owned and private-owned 
+                enterprises to discover and consequently 
+                eliminate potential threats to the security of cyber 
+                platforms.</h3>
+
+          </div>
+      </div>
+
+      <!-- <div class="row pb-3 pt-5 align-items-center">
+          <div class="col-lg-6">
+              <h3 class="font-weight-normal">Simply beautiful design</h3>
+              <p class="text-muted mt-3">The simplest and fastest way to build dashboard or admin panel. Hyper is built using the latest tech and tools and provide an easy way to customize anything, including an overall color schemes, layout, etc.</p>
+
+              <div class="mt-4">
+                  <p class="text-muted"><i class="mdi mdi-circle-medium text-success"></i> Built with latest Bootstrap</p>
+                  <p class="text-muted"><i class="mdi mdi-circle-medium text-success"></i> Extensive use of SCSS variables</p>
+                  <p class="text-muted"><i class="mdi mdi-circle-medium text-success"></i> Well documented and structured code</p>
+                  <p class="text-muted"><i class="mdi mdi-circle-medium text-success"></i> Detailed Documentation</p>
+              </div>
+
+              <a href="" class="btn btn-success btn-rounded mt-3">Read More <i class="mdi mdi-arrow-right ml-1"></i></a>
+
+          </div>
+          <div class="col-lg-5 offset-lg-1">
+              <img src="{% static 'assets/images/features-2.svg' %}" class="img-fluid" alt="">
+          </div>
+      </div> -->
+
+  </div>
+</section>
+<!-- END FEATURES 2 -->
+
+
+
+
+<!-- START SERVICES -->
+<section class="py-5">
+    <div class="container">
+        <div class="row py-4">
+            <div class="col-lg-12">
+                <div class="text-center">
+                    <h1>Why us? </h1>
+                    <p class="text-muted mt-2">Utilizing competent local talents Under the theme 
+                        innovation in Fintech and Cybersecurity, Oman 
+                        National CERT<br/> We connects the right researchers to the right use 
+                        cases and helps customers find, prioritize and fix 
+                        security vulnerabilities at unprecedented speed.  </p>
+                </div>
+            </div>
+        </div>
+  
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="text-center p-3">
+                    <div class="avatar-sm m-auto">
+                        <span class="avatar-title bg-primary-lighten rounded-circle">
+                            <i class="uil dripicons-document text-primary font-24"></i>
+                        </span>
+                    </div>
+                    <h4 class="mt-3">Mission</h4>
+                    <p class="text-muted mt-2 mb-0">In Bug Bounty Oman we strongly 
+                        believe in building safer cybersecurity 
+                        by proactively coordinating 
+                        partnerships with researchers to make 
+                        customers more secure. We utilize 
+                        competent security researchers' 
+                        talents to better protect billions of 
+                        customers.
+                    </p>
+                </div>
+            </div>
+  
+            <div class="col-lg-4">
+                <div class="text-center p-3">
+                    <div class="avatar-sm m-auto">
+                        <span class="avatar-title bg-primary-lighten rounded-circle">
+                            <i class="uil uil-eye text-primary font-24"></i>
+                        </span>
+                    </div>
+                    <h4 class="mt-3">Vision</h4>
+                    <p class="text-muted mt-2 mb-0">To ensure a comprehensive and sustainable 
+                        high level of cybersecurity in Oman and 
+                        worldwide, utilizing competent national 
+                        talents of security researchers.
+                    </p>
+                </div>
+            </div>
+  
+            <div class="col-lg-4">
+                <div class="text-center p-3">
+                    <div class="avatar-sm m-auto">
+                        <span class="avatar-title bg-primary-lighten rounded-circle">
+                            <i class="uil dripicons-thumbs-up text-primary font-24"></i>
+                        </span>
+                    </div>
+                    <h4 class="mt-3">Values</h4>
+                    <p class="text-muted mt-2 mb-0">Authenticity<br/>
+                        Security<br/>
+                        Trust<br/>
+                        Customer Service<br/>
+                    </p>
+                </div>
+            </div>
+        </div>
+  
+
+  
+    </div>
+  </section>
+  <!-- END SERVICES -->
+  
+
+
+
+
+
+<!-- START CONTACT -->
+<section class="py-5 bg-light-lighten border-top border-bottom border-light" id="contact">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-12">
+              <div class="text-center">
+                  <h3>Get In <span class="text-primary">Touch</span></h3>
+                  <p class="text-muted mt-2">Please fill out the following form and we will get back to you shortly. For more 
+                      <br>information please contact us.</p>
+              </div>
+          </div>
+      </div>
+
+      <div class="row align-items-center mt-3">
+          <div class="col-md-4">
+              <p class="text-muted"><span class="font-weight-bold">Customer Support:</span><br> <span class="d-block mt-1">+968 22507566</span></p>
+              <p class="text-muted mt-4"><span class="font-weight-bold">Email Address:</span><br> <span class="d-block mt-1">info@bugbounty.om</span></p>
+              <p class="text-muted mt-4"><span class="font-weight-bold">Office Address:</span><br> <span class="d-block mt-1">4th Floor, Bait Al Reem Building,</br> Alkhuwair Sultanate of Oman</span></p>
+          </div>
+
+          <div class="col-md-8">
+              <form method="POST">
+                {% csrf_token %}
+
+                  <div class="row mt-4">
+                      <div class="col-lg-6">
+                          <div class="form-group">
+                              <label for="fullname">Your Name</label>
+                              <input class="form-control form-control-light" type="text" id="fullname" placeholder="Name...">
+                          </div>
+                      </div>
+                      <div class="col-lg-6">
+                          <div class="form-group">
+                              <label for="emailaddress">Your Email</label>
+                              <input class="form-control form-control-light" type="email" required="" id="emailaddress" placeholder="Enter you email...">
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="row mt-1">
+                      <div class="col-lg-12">
+                          <div class="form-group">
+                              <label for="subject">Your Subject</label>
+                              <input class="form-control form-control-light" type="text" id="subject" placeholder="Enter subject...">
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="row mt-1">
+                      <div class="col-lg-12">
+                          <div class="form-group">
+                              <label for="comments">Message</label>
+                              <textarea id="comments" rows="4" class="form-control form-control-light" placeholder="Type your message here..."></textarea>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="row mt-2">
+                      <div class="col-12 text-right">
+                          <button class="btn btn-primary">Send a Message <i
+                              class="mdi mdi-telegram ml-1"></i> </button>
+                      </div>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</section>
+<!-- END CONTACT -->
+
+{% include 'footer.html' %}
+
+
+{% endblock %}

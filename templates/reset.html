@@ -1,0 +1,127 @@
+{% extends 'main.html' %}
+{% block body %} class="loading authentication-bg" data-layout-config='{"darkMode":false}' {% endblock body %}
+
+{% block content %}
+
+
+<style>
+
+
+input {
+  display: block;
+  width: 100%;
+  height: calc(2.2125rem + 2px);
+  padding: 0.45rem 0.9rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: black;
+  background-color: white;
+  background-clip: padding-box;
+  border: 1px solid gray;
+  border-radius: 0.25rem;
+  -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out; }
+  @media (prefers-reduced-motion: reduce) {
+    input {
+      -webkit-transition: none;
+      transition: none; } }
+  input::-ms-expand {
+    background-color: transparent;
+    border: 0; }
+  input:-moz-focusring {
+    text-shadow: 0 0 0 #e3eaef; }
+  input:focus {
+    color: black;
+    background-color: white;
+    border-color: black;
+    outline: 0;
+    -webkit-box-shadow: none;
+            box-shadow: none; }
+  input::-webkit-input-placeholder {
+    color: black;
+    opacity: 1; }
+  input::-moz-placeholder {
+    color: black;
+    opacity: 1; }
+  input:-ms-input-placeholder {
+    color: black;
+    opacity: 1; }
+  input::-ms-input-placeholder {
+    color: black;
+    opacity: 1; }
+  input::placeholder {
+    color: black;
+    opacity: 1; }
+  input:disabled, input[readonly] {
+    background-color: black;
+    opacity: 1; }
+
+input[type="text"]input,
+input[type="email"]input,
+input[type="password"]input,
+input[type="datetime-local"]input,
+input[type="month"]input {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none; }
+
+</style>
+        <div class="account-pages mt-5 mb-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-5">
+                        <div class="card">
+                            <!-- Logo -->
+                            <div class="card-header pt-4 pb-4 text-center bg-primary">
+                                <a href="index.html">
+                                    <span><img src="assets/images/logo.png" alt="" height="18"></span>
+                                </a>
+                            </div>
+                            
+                            <div class="card-body p-4">
+                                
+                                <div class="text-center w-75 m-auto">
+                                    <h4 class="text-dark-50 text-center mt-0 font-weight-bold">Enter new password</h4>
+                                    <p class="text-muted mb-4">Please enter your new password twice so we can verify you typed it in correctly.</p>
+                                </div>
+
+                                <form method="POST">
+                                    <div class="form-group mb-3">
+                                        {% csrf_token %}
+                                        {{form.as_p}}
+                                    </div>
+
+                                    <div class="form-group mb-0 text-center">
+                                        <button class="btn btn-primary" type="submit">Reset Password</button>
+                                    </div>
+                                </form>
+                            </div> <!-- end card-body-->
+                        </div>
+                        <!-- end card -->
+
+                        <div class="row mt-3">
+                            <div class="col-12 text-center">
+                                <p class="text-muted">Back to <a href="{% url 'cylogin' %}" class="text-muted ml-1"><b>Log In</b></a></p>
+                            </div> <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                    </div> <!-- end col -->
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end container -->
+        </div>
+        <!-- end page -->
+
+        <footer class="footer footer-alt">
+            2018 - 2020 © Hyper - Coderthemes.com
+        </footer>
+
+
+
+{% endblock content %}
+

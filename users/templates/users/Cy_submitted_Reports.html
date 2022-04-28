@@ -1,0 +1,166 @@
+{% extends 'main.html' %}
+{% block body %} class="loading" data-layout="detached" data-layout-config='{"leftSidebarCondensed":false,"darkMode":false, "showRightSidebarOnStart": true}'
+{% endblock body %}
+{% block content %}
+
+ <!-- Pre-loader -->
+ <div id="preloader">
+    <div id="status">
+        <div class="bouncing-loader"><div ></div><div ></div><div ></div></div>
+    </div>
+</div>
+<!-- End Preloader-->
+
+
+        <!-- Start Content-->
+        <div class="container-fluid">
+
+            <!-- Begin page -->
+            <div class="wrapper">
+
+                                    <!-- Sidebar -left -->
+
+                </div>
+                <!-- Left Sidebar End -->
+
+                <div class="content-page">
+                    <div class="content">
+                        
+                        <!-- start page title -->
+                        <div class="row">
+
+            <!-- <ul>
+                {% for sr in SRQ %}
+
+                {% if request.user.customerprofile.CuRes_ID == sr.CuRes_ID.CuRes_ID %}
+                <li>Title: <a href="{% url 'payment' sr.SR_ID %}"> {{sr}} </a></li>
+                {% endif %}
+          
+
+
+  
+              
+                {% endfor %}
+            </ul> -->
+
+            <div class="col-12">
+                <div class="page-title-box">
+                   
+                    <h4 class="page-title">Submitted Reports</h4>
+                </div>
+            </div>
+        </div>     
+        <!-- end page title --> 
+
+        <div class="row mb-2">
+
+            <div class="col-sm-8">
+               
+            </div><!-- end col-->
+        </div> 
+        <!-- end row-->
+
+        <div class="row">
+
+            {% for sr in SRP %}
+
+            {% if request.user.cyprofile.CyRes_ID == sr.CyRes_ID.CyRes_ID %}
+            
+
+            <!-- srart col -->
+            <div class="col-md-6 col-xl-3"> <!-- srart col -->
+                <!-- project card -->
+                <div class="card d-block">
+                    <div class="card-body">
+                       
+                        <!-- project title-->
+                        <h4 class="mt-0">
+                            <a href="{% url 'Cy_single' sr.SRP_ID %}" class="text-title">{{sr.SR_ID.CuRes_ID.user.first_name}}</a>
+                        </h4>
+
+                        {% if sr.SRP_Status == 'accepted' or sr.SRP_Status == 'Ended' %}
+                        <div class="badge badge-success badge-pill">Accepted</div>
+                        {% endif %}
+
+                        {% if sr.SRP_Status == 'Pending' %}
+                        <div class="badge badge-secondary badge-pill">Pending</div>
+                        {% endif %}
+
+                        {% if sr.SRP_Status == 'Rejected' %}
+                        <div class="badge badge-danger badge-pill">Rejected</div>
+                        {% endif %}
+
+
+                        <p class="text-muted font-13 mb-3">{{sr.SRP_Description}}<a href="{% url 'Cy_single' sr.SRP_ID %}" class="font-weight-bold text-muted">view more</a>
+                        </p>
+
+                        <!-- project detail-->
+                        <p class="mb-1">
+                            <span class="pr-2 text-nowrap mb-2 d-inline-block">
+                                <i class="mdi mdi-format-list-bulleted-type text-muted"></i>
+                                <b>4</b> Prizes
+                            </span>
+                            <span class="text-nowrap mb-2 d-inline-block">
+                                <i class="mdi mdi-comment-multiple-outline text-muted"></i>
+                                <b>{{sr.SR_ID.CuRes_ID.CuRes_organization_Sector}}</b>
+                            </span>
+                        </p>
+                      
+                    </div> <!-- end card-body-->
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item p-3">
+                            <!-- project progress-->
+                            {% if sr.SR_Approval_status == 'Witing_for_Pyament' %}
+                            <!-- <p class="mb-2 font-weight-bold"><a href="{% url 'payment' sr.SR_ID %}" class="btn btn-danger btn-rounded mb-3" style='background-color:#536de6; border-color: #536de6;' ><i class=""></i>Pay</a></span></p> -->
+                            {% endif %}
+                            <div class="progress progress-sm">
+
+                                {% if sr.SRP_Status == 'accepted'  %}
+                                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%; background-color:#10c469">
+                                {% endif %}
+
+
+                                {% if sr.SRP_Status == 'Pending'  %}
+                                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%; background-color:#6c757d">
+                                {% endif %}
+                                
+                                {% if sr.SRP_Status == 'Rejected' %}
+                                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%; background-color:#ff5b5b">
+                                {% endif %}
+
+
+                                </div><!-- /.progress-bar -->
+                            </div><!-- /.progress -->
+                        </li>
+                    </ul>
+                </div> <!-- end card-->
+            </div> <!-- end col -->
+
+            {% endif %}
+      
+
+
+
+          
+            {% endfor %}
+
+      
+                           
+                           
+                            
+                          
+                            
+                        </div>
+                        <!-- end row-->
+
+                      
+                        
+                    </div> <!-- End Content -->
+
+                    </div>
+                    </div>
+
+                    {% include 'footer.html' %}
+
+
+{% endblock %}

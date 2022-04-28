@@ -1,0 +1,223 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block body %}class="loading" data-layout="detached" data-layout-config='{"leftSidebarCondensed":false,"darkMode":false, "showRightSidebarOnStart": true}'
+{% endblock body %}
+{% block content %}
+
+
+ <!-- Pre-loader -->
+ <div id="preloader">
+    <div id="status">
+        <div class="bouncing-loader"><div ></div><div ></div><div ></div></div>
+    </div>
+</div>
+<!-- End Preloader-->
+
+
+ <!-- project card -->
+ <div class="card d-block">
+  <div class="card-body">
+ 
+      <!-- project title-->
+      <h3 class="mt-0">
+        {{form_SR.CuRes_ID.user.first_name}}
+      </h3>
+<br/>
+      <h5>Company Descripation:</h5>
+
+      <p class="text-muted mb-2">
+        {{form_SR.CuRes_ID.CuRes_Description}}
+      </p>
+
+      <div class="row" style="margin-left: auto;
+      margin-right: auto;">
+          <h5>Compamy email: <span style="color: cornflowerblue;">{{form_SR.CuRes_ID.CuRes_Email}}</span></h5>
+      </div>
+  
+
+      <div class="row" style="margin-left: auto;
+      margin-right: auto;">
+          <div class="col-md-4">
+              <div class="mb-4">
+                  <h5>Phone:</h5>
+                  <p>{{form_SR.CuRes_ID.CuRes_Phone}}</p>
+              </div>
+          </div>
+          <div class="col-md-4">
+              <div class="mb-4">
+                  <h5>CuRes Contact Person</h5>
+                  <p>{{form_SR.CuRes_ID.CuRes_Contact_Person}}</p>
+              </div>
+          </div>
+          <div class="col-md-4">
+            <div class="mb-4">
+                <h5>Sector</h5>
+                <p>
+                    {{form_SR.CuRes_ID.CuRes_organization_Sector}}
+                    
+
+                    </p>
+                    <br/>
+            </div>
+        </div>
+
+     
+      </div>
+
+      
+
+<div class="row" style="margin-left: auto;
+margin-right: auto;">
+    <div class="col-md-2" style="margin-left: auto;
+    margin-right: auto;">
+      <div class="custom-file">
+        <div class="mb-4">
+
+
+        </div>
+      </div>
+    </div>
+        </div>
+
+<div class="row" style="margin-left: auto;
+margin-right: auto;">
+    <div class="col-md-3" style="margin-left: auto;
+    margin-right: auto;">
+      <div class="custom-file">
+        <div class="mb-3">
+
+
+{% if request.user.last_name == 'cy' %}
+<form method="POST" enctype="multipart/form-data" action="">
+    {% csrf_token %}
+    {{form.as_p}}
+    <br/>
+
+    <button type="submit" class="btn btn-outline-success btn-block  btn-rounded"><i class="uil-cloud-computing"></i> Submit</button>
+
+  </form>
+{% endif %}
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                             
+                                
+                                <h4 class="header-title mb-3">Services Request Participant</h4>
+
+                                <div class="chart-content-bg">
+                                    <div class="row text-center">
+                                        <div class="col-md-12">
+                                            <table class="table mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Organization Name</th>
+                                                        <th>Cyber Res</th>
+                                                        <th>Report</th>
+                                                        <th>Status</th>
+                                                        <th>Date</th>
+                                                        <th>Add award</th>
+
+                                                    </tr>
+                                                </thead>
+                                            
+                                                <tbody>
+                                                    {% for srp in form_SRP %}
+                                                    {% if form_SR == srp.SR_ID %}
+                                                    <tr>
+                                                        <td>
+                                                            <a href="{% url 'adminsrp' srp.SRP_ID %}" class="" ><i class=""></i>{{srp.SR_ID.CuRes_ID.user.first_name}}</a>
+
+                                                        </td>
+                                                        <td>{{srp.CyRes_ID.CyRes_UserName}}</td>
+                                                        <td>
+                                                        {% if srp.SRP_Report != '' %}
+                                                        <a href="{{srp.SRP_Report.url}}" download>{{srp.SRP_Report}}</a>
+                                                        {% endif %}
+                                                    </td>
+                                                        <td>{{srp.SRP_Status}}</td>
+                                                        <td>{{srp.SRP_Created}}</td>
+                                                        <td>
+                                                            {% if srp.SRP_Status == 'accepted' %}
+                                                            <p class="mb-2 font-weight-bold"><a href="{% url 'addawd' srp.SRP_ID %}" class="btn btn-danger btn-rounded mb-3" style="background-color: #536de6;border-color: #536de6;"><i class=""></i>+ Add award</a></span></p>
+                                                            {% endif %}
+                                                        </td>
+
+                                                        
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <!-- Start Numbring -->
+
+                                        
+
+                                        <!-- End Numbering -->
+
+                                    </div>
+                                </div>
+
+                                <div id="dash-revenue-chart" class="apex-charts" data-colors="#10c469,#ff5b5b"></div>
+
+                            </div>
+                            <!-- end card body-->
+                        </div>
+                        <!-- end card -->
+                    </div>
+                    <!-- end col-->
+
+
+                </div>
+                <!-- end row-->
+                
+            </div> <!-- End Content -->
+
+            <!-- Footer Start -->
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6">
+                            2018 - 2020 © Hyper - Coderthemes.com
+                        </div>
+                        <div class="col-md-6">
+                            <div class="text-md-right footer-links d-none d-md-block">
+                                <a href="javascript: void(0);">About</a>
+                                <a href="javascript: void(0);">Support</a>
+                                <a href="javascript: void(0);">Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!-- end Footer -->
+
+        </div> <!-- content-page -->
+
+    </div> <!-- end wrapper-->
+</div>
+<!-- END Container -->
+
+
+
+</div> <!-- end card-body-->
+  
+</div> <!-- end card-->
+
+
+
+<!-- plugin js -->
+<script src="{% static 'assets/js/vendor/dropzone.min.js' %}"></script>
+<!-- init js -->
+<script src="{% static 'assets/js/ui/component.fileupload.js' %}"></script>
+{% endblock %}

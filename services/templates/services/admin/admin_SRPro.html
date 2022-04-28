@@ -1,0 +1,52 @@
+{% extends 'main.html' %}
+{% block body %} class="loading" data-layout="detached" data-layout-config='{"leftSidebarCondensed":false,"darkMode":false, "showRightSidebarOnStart": true}'
+{% endblock body %}
+{% block content %}
+
+
+
+
+
+          
+          <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <div class="form-group">
+                                    <form method="POST"  enctype="multipart/form-data">
+                                      {% csrf_token %}
+                                      {% for field in form %}
+                                      <label for="projectname">{{field.label}}</label>
+                                      {{field}}
+
+                                      {% endfor %}
+                                      <input type="submit" class="btn btn-secondary btn-rounded" />
+                                    </form>
+                                </div>
+
+                               
+
+                               
+
+                            </div> <!-- end col-->
+
+                           
+                        </div>
+                        <!-- end row -->
+
+                    </div> <!-- end card-body -->
+                </div> <!-- end card-->
+            </div> <!-- end col-->
+        </div>
+        <!-- end row-->
+
+
+
+
+
+
+
+{% endblock %}

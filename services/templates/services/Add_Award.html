@@ -1,0 +1,84 @@
+{% extends 'main.html' %}
+{% block body %} class="loading" data-layout="detached" data-layout-config='{"leftSidebarCondensed":false,"darkMode":false, "showRightSidebarOnStart": true}'
+{% endblock body %}
+{% block content %}
+
+
+      
+ <!-- Pre-loader -->
+ <div id="preloader">
+    <div id="status">
+        <div class="bouncing-loader"><div ></div><div ></div><div ></div></div>
+    </div>
+</div>
+<!-- End Preloader-->
+
+<div class="row">
+
+        <div class="col-xl-3">
+        <h4>Organization:</h4>
+        <div class="container">
+            {{obj.SR_ID.CuRes_ID.user.first_name}}
+        </div></div>
+
+        <div class="col-xl-3">
+        <h4>Cyber Name:</h4>
+        <div class="container">
+            {{obj.CyRes_ID.CyRes_Name}}
+        </div></div>
+
+        <div class="col-xl-3">
+        <h4>Degree of Danger:</h4>
+        <div class="container">
+            {{obj.SRP_Danger}}
+        </div></div>
+
+        <div class="col-xl-3">
+        <h4>Prize:</h4>
+        <div class="container">
+            {% if obj.SRP_Danger == 'Low' %}
+            {{obj.SR_ID.SR_Low_Award}}
+            {% endif %}
+            {% if obj.SRP_Danger == 'Medium' %}
+            {{obj.SR_ID.SR_Medium_Award}}
+            {% endif %}
+            {% if obj.SRP_Danger == 'High' %}
+            {{obj.SR_ID.SR_High_Award}}
+            {% endif %}
+            {% if obj.SRP_Danger == 'Critical' %}
+            {{obj.SR_ID.SR_Critical_Award}}
+            {% endif %}        R.O</div> </div>
+
+   
+    
+</div>
+
+                        <br/>
+                          <div class="row">
+                              <div class="container">
+                                  <div class="form-group">
+                                      <form method="POST" >
+                                        {% csrf_token %}
+                                        <!-- {% for field in form %}
+                                        <label for="projectname">{{field.label}}</label>
+                                        {{field}}
+                                        
+                                        {% endfor %} -->
+                                        <input type="submit" class="btn btn-secondary btn-rounded" value="Add award" />
+                                      </form>
+                                  </div>
+
+                                 
+
+                                 
+
+                              </div> <!-- end col-->
+
+                             
+                          </div>
+                          <!-- end row -->
+
+
+
+
+{% endblock %}

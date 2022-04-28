@@ -1,0 +1,125 @@
+
+{% extends 'main.html' %}
+{% block body %} class="loading" data-layout="detached" data-layout-config='{"leftSidebarCondensed":false,"darkMode":false, "showRightSidebarOnStart": true}'
+{% endblock body %}
+{% block content %}
+
+
+ <!-- Pre-loader -->
+ <div id="preloader">
+    <div id="status">
+        <div class="bouncing-loader"><div ></div><div ></div><div ></div></div>
+    </div>
+</div>
+<!-- End Preloader-->
+
+
+          
+          <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <h4>Name / User Name:</h4>
+                                <p>{{obj.CyRes_Name}} / {{obj.CyRes_UserName}}</p>
+
+                                <h4>Email:</h4>
+                                <p>{{obj.CyRes_Email}}</p>
+                            </div> <!-- end col-->
+                            <div class="col-xl-6">
+                                <h4>Phone:</h4>
+                                <p>{{obj.CyRes_Phone}}</p>
+
+                                <h4>Start Day:</h4>
+                                <!-- <p>{{obj.CyRes_Created}}</p> -->
+                            </div>
+
+                            <div class="col-xl-6">
+
+                            </div>
+                            <div class="col-xl-1">
+                                <h4>Profile picture:</h4>
+                                <img src="{{obj.CyRes_Profile_Image.url}}" alt="Admin" class="rounded-circle" width="150">
+                                </div>
+
+
+                               
+
+                               
+
+                            
+                           
+                        </div>
+                        <!-- end row -->
+
+                        <div class="row">
+                            <div class="col-xl-8">
+                                <h4>Bio:</h4>
+                                <p>{{obj.CyRes_Bio}}</p>
+                            </div>
+                            <div class="container">
+                                <form method="POST"  enctype="multipart/form-data">
+                                  {% csrf_token %}
+                                  <!-- {% for field in form %}
+                                  <label for="projectname">{{field.label}}</label>
+                                  {{field}}
+
+                                  {% endfor %} -->
+                                  <label for="projectname">Cyber Type</label>
+                                    {{form.CyRes_Service_Type}}
+                                
+                                 <br/> <label for="projectname">Organization Status</label>
+                                  {{form.CuRes_Status}}
+                                  <br/> <label for="projectname">Note</label>
+                                  {{form.CyRes_Note}}
+                                  <br/><input type="submit" class="btn btn-secondary btn-rounded" />
+                            
+                                </form>
+                            </div>
+                        </div>
+                    </div> <!-- end card-body -->
+                    <table class="table table-centered mb-0">
+                        <thead class="">
+                            <tr>
+                                <th>Status</th>
+                                <th>Sector</th>
+                                <th>Note</th>
+                                <th>Created Date</th>
+                                <th>User Name</th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for cy_log in Cy_Logs_obj %}
+                            <tr>
+                              
+                                <td>{{cy_log.Cy_LOG_Status}}</td>
+                                <td>{{cy_log.Cy_LOG_Sector}}</td>
+                                <td>{{cy_log.Cy_LOG_Note}}</td>
+                                <td>{{cy_log.Cy_Created}}</td>
+                                <td>{{cy_log.Cy_LOG_User}}</td>
+
+
+                            
+                            </tr>
+                            {% endfor %}
+                           
+                        </tbody>
+                    </table>
+                    
+
+                </div> <!-- end card-->
+            </div> <!-- end col-->
+        </div>
+        <!-- end row-->
+
+
+
+
+
+
+
+{% endblock %}

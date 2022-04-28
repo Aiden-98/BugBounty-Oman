@@ -1,0 +1,644 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Bug Bounty Oman</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'images/favicon.png' %}" rel="icon">
+  <link href="{% static 'images/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'Home_Temp/assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'Home_Temp/assets/vendor/icofont/icofont.min.css' %}" rel="stylesheet">
+  <link href="{% static 'Home_Temp/assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'Home_Temp/assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+  <link href="{% static 'Home_Temp/assets/vendor/venobox/venobox.css' %}" rel="stylesheet">
+  <link href="{% static 'Home_Temp/assets/vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+  <link href="{% static 'Home_Temp/assets/vendor/aos/aos.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'Home_Temp/assets/css/style.css' %}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Arsha - v2.3.1
+  * Template URL: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center">
+
+      <!-- <h1 class="logo mr-auto"> -->
+	  <a href="index.html"><img src="{% static 'Home_Temp/assets/img/Navbar_BugLogo_White.png' %}" alt="" style="max-width:30%">
+</a>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo mr-auto"><img src="{% static 'Home_Temp/assets/img/logo.png' %}" alt="" class="img-fluid"></a>-->
+
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+          <li class="active"><a href="{% url 'index' %}">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="{% url 'reportbug' %}">Report Bug</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <!-- <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#team">Team</a></li> -->
+          {% if request.user.is_authenticated %}
+          <li class="drop-down"><a href=""><b>{{request.user.first_name}}</b></a>
+            <ul>
+              {% if request.user.last_name == 'cy' %}
+              <li><a href="{% url 'uprofile' %}">My Account</a></li>
+              <li><a href="{% url 'SR_Request' %}">Display Requests</a></li>
+              {% endif %}
+
+              {% if request.user.last_name == 'org' %}
+              <li><a href="{% url 'uprofile' %}">My Account</a></li>
+              <li><a href="{% url 'cuRequests' %}">Requests</a></li>
+              {% endif %}
+
+              {% if request.user.last_name == 'admin' %}
+              <li><a href="{% url 'adminp' %}">Admin Panel</a></li>
+              {% endif %}
+              <li><a href="{% url 'logout' %}">Logout</a></li>
+
+              <!-- <li><a href="#">Drop Down 3</a></li>
+              <li><a href="#">Drop Down 4</a></li> -->
+              <!-- <li class="drop-down"><a href="#">Deep Drop Down</a>
+                <ul>
+                  <li><a href="#">Deep Drop Down 1</a></li>
+                  <li><a href="#">Deep Drop Down 2</a></li>
+                  <li><a href="#">Deep Drop Down 3</a></li>
+                  <li><a href="#">Deep Drop Down 4</a></li>
+                  <li><a href="#">Deep Drop Down 5</a></li>
+                </ul>
+              </li> -->
+
+            </ul>
+          </li>
+          {% endif %}
+        </ul>
+      </nav><!-- .nav-menu -->
+
+      {% if request.user.is_authenticated %}
+
+      {% else %}
+      <a href="{% url 'cylogin' %}" class="get-started-btn scrollto">Login/Sign Up</a>
+      {% endif %}
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+          <h1>Bug Bounty Oman</h1>
+          <h2>
+            #1 BugBounty platform in Oman <br/>
+        
+
+          </h2>
+          <div class="d-lg-flex">
+            <a href="{% url 'cyReg' %}" class="btn-get-started scrollto">Register</a>
+            <!-- <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="venobox btn-watch-video" data-vbtype="video" data-autoplay="true"> Watch Video <i class="icofont-play-alt-2"></i></a> -->
+          </div>
+        </div>
+        <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+          <img src="{% static 'Home_Temp/assets/img/BugLogo.png' %}" class="img-fluid animated" alt="" style="max-width:100%;   padding-left: 160px;">
+        </div>
+      </div>
+    </div>
+
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= Cliens Section ======= -->
+    <section id="cliens" class="cliens section-bg">
+      <!-- <div class="container"> -->
+
+        <!-- <div class="row" data-aos="zoom-in"> -->
+
+          <!-- <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center"> -->
+            <!-- <img src="{% static 'Home_Temp/assets/img/clients/client-1.png" class="img-fluid" alt=""> -->
+          <!-- </div> -->
+
+          <!-- <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center"> -->
+            <!-- <img src="{% static 'Home_Temp/assets/img/clients/client-2.png" class="img-fluid" alt=""> -->
+          <!-- </div> -->
+
+          <!-- <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center"> -->
+            <!-- <img src="{% static 'Home_Temp/assets/img/clients/client-3.png" class="img-fluid" alt=""> -->
+          <!-- </div> -->
+
+          <!-- <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center"> -->
+            <!-- <img src="{% static 'Home_Temp/assets/img/clients/client-4.png" class="img-fluid" alt=""> -->
+          <!-- </div> -->
+
+          <!-- <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center"> -->
+            <!-- <img src="{% static 'Home_Temp/assets/img/clients/client-5.png" class="img-fluid" alt=""> -->
+          <!-- </div> -->
+
+          <!-- <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center"> -->
+            <!-- <img src="{% static 'Home_Temp/assets/img/clients/client-6.png" class="img-fluid" alt=""> -->
+          <!-- </div> -->
+
+        <!-- </div> -->
+
+      <!-- </div> -->
+    </section><!-- End Cliens Section -->
+
+    <!-- ======= About Us Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>About Us</h2>
+        </div>
+
+        <div class="row content">
+		  <p>
+             
+        The Bug Bounty Platform was established under the umbrella of Datamount, the first of its kind in Oman and the second in the Middle East. 
+        <br/>It is an integrated platform that serves as an intermediary whose role is to manage and link security researchers in the field of cybersecurity to discover security vulnerabilities in the institutions' websites and programs with the aim of eliminating all potential security threats and raising the security level and ensure the rights of all parties. 
+        
+            </p>
+          <!-- <div class="col-lg-6"> -->
+            <!-- <p> -->
+              <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore -->
+              <!-- magna aliqua. -->
+            <!-- </p> -->
+            <!-- <ul> -->
+              <!-- <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li> -->
+              <!-- <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li> -->
+              <!-- <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li> -->
+            <!-- </ul> -->
+          <!-- </div> -->
+          <!-- <div class="col-lg-6 pt-4 pt-lg-0"> -->
+            <!-- <p> -->
+              <!-- Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate -->
+              <!-- velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in -->
+              <!-- culpa qui officia deserunt mollit anim id est laborum. -->
+            <!-- </p> -->
+            <!-- <a href="#" class="btn-learn-more">Learn More</a> -->
+          <!-- </div> -->
+        </div>
+
+      </div>
+    </section><!-- End About Us Section -->
+
+    <!-- ======= Why Us Section ======= -->
+    <section id="why-us" class="why-us section-bg">
+      <div class="container-fluid" data-aos="fade-up">
+
+        <div class="row">
+
+          <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
+
+            <div class="content">
+              <h3><strong>Why BugBounty?</strong></h3>
+              <p>
+                Bugbounty is a very powerful platform. Most of technology leader like google, Facebook, apple using crowdsourced security like bugbounty to reduce security risk:
+                <br/><br/>•	Like all forms of crowdsourcing, bugbounty security gathered a cybersecurity researcher (cyber attacker) to work in reducing or eliminating the risk of digital presences of the organization by vulnerabilities test. Bugbounty is crowdsources security platform (CSSP) which works as connection and management layer. 
+                <br/><br/>•	Bugbounty gather skilled and experiences security researchers and ethical hackers. Also, will evaluate their skills and experiences and match it with test opportunities. 
+                <br/><br/>•	Bugbounty will ensure smooth and fear vulnerability repot submission into the platform. 
+                
+                            </p>
+            </div>
+
+            <div class="accordion-list">
+              <ul>
+                <li>
+                  <a data-toggle="collapse" class="collapse" href="#accordion-list-1"><span>01</span> Mission <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                  <div id="accordion-list-1" class="collapse show" data-parent=".accordion-list">
+                    <p>
+                      In Bug Bounty Oman, we strongly believe in building high 
+                      cyber security and eliminating all potential digital threats 
+                      to contribute in raising the technical level in the Sultanate of Oman. 
+                    </p>
+                  </div>
+                </li>
+
+                <li>
+                  <a data-toggle="collapse" href="#accordion-list-2" class="collapsed"><span>02</span> Vision <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                  <div id="accordion-list-2" class="collapse" data-parent=".accordion-list">
+                    <p>
+                      To ensure a comprehensive and sustainable high 
+                      level of cybersecurity in Oman through national 
+                      talents of security researchers. 
+                                </p>
+                  </div>
+                </li>
+
+                <li>
+                  <a data-toggle="collapse" href="#accordion-list-3" class="collapsed"><span>03</span> Objective  <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                  <div id="accordion-list-3" class="collapse" data-parent=".accordion-list">
+                    <p>
+                      ⬡	The platform aims to raise the level of cyber security in the Sultanate by raising the security level of sites, programs and data. 
+                      <br/><br/>⬡	The platform aims to link national competencies in the field of cybersecurity and institutions to exploit these competencies perfectly while ensuring complete confidentiality for security researchers as well as institutions. 
+                      <br/><br/>⬡	To make the platform the first choice for all organizations that need innovative and diversified security research, to overcome security vulnerabilities, and to test the security capabilities of sites and programs
+                      <br/><br/>⬡	Train and coach national security researchers talented by promoting and motivating young people to exploit their creativity and talents in the field of cybersecurity. 
+                      <br/><br/>⬡	Providing job opportunities for security researchers, aiming through the platform to be as a mediator between institutions and security researchers, in line with job opportunities in the field of cybersecurity. 
+                      
+                    </p>
+                  </div>
+                </li>
+
+              </ul>
+            </div>
+
+          </div>
+
+          <div class="col-lg-5 align-items-stretch order-1 order-lg-2 img" style='background-image: url("{% static 'Home_Temp/assets/img/why-us.png' %}");' data-aos="zoom-in" data-aos-delay="150">&nbsp;</div>
+        </div>
+
+      </div>
+    </section><!-- End Why Us Section -->
+
+    <!-- ======= Skills Section ======= -->
+      <section id="services" class="services section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>How it works?</h2>
+          <!-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> -->
+        </div>
+
+        <div class="row" style="  display: flex;
+        justify-content: center;
+        align-items: center;">
+          <div class="col-xl-4 col-md-5 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+            <div class="icon-box">
+              <div class="icon"><h2 style="color:#47b2e4;">1</h2></div>
+              <h4> Registration </h4>
+              <p>company or induvial must go through the registration process through the website (bugbounty.om) either as customer or as security researcher</p>
+            </div>
+          </div>
+
+          <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box">
+              <div class="icon"><h2 style="color:#47b2e4;">2</h2></div>
+              <h4> Scope of work </h4>
+              <p>customer must identify what asset need to be test it (website, web application, API, IOT, other).
+                 Customer must identify the enviroment test either in production or development or 
+                test enviroment. Customer will also identify the award amount depend on the critically of the finding (Critical, medium, low)</p>
+            </div>
+          </div>
+
+          <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="300">
+            <div class="icon-box">
+              <div class="icon"><h2 style="color:#47b2e4;">3</h2></div>
+              <h4> Researcher engagement </h4>
+              <p>registered researcher will start applying to the new request from the customer and start the vulnerability assessment</p>
+            </div>
+          </div>
+
+
+        </div>
+
+        <br/><div class="row" style="  display: flex;
+        justify-content: center;
+        align-items: center;">
+          <div class="col-xl-5 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+            <div class="icon-box">
+              <div class="icon"><h2 style="color:#47b2e4;">4</h2></div>
+              <h4> Vulnerability submission </h4>
+              <p>security researcher will upload their finding and automatically the platform will identify it either it is <strong>critical, Hight, Medium or Low finding </strong></p>
+            </div>
+          </div>
+
+          <div class="col-xl-6 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box">
+              <div class="icon"><h2 style="color:#47b2e4;">5</h2></div>
+              <h4> Reward </h4>
+              <p>BugBounty team will validate the finding from each security researcher and either approval or reject the report. 
+                Based only on the approval of bugbounty and customer the reward will be given to the researcher after the bugbounty cut 10% of the award to manage the process</p>
+            </div>
+          </div>
+
+     
+
+        </div>
+
+      </div>
+   
+     </section> 
+	<!-- End Skills Section -->
+
+    <!-- ======= Services Section ======= -->
+
+    
+	<!-- End Services Section -->
+
+    <!-- ======= Cta Section ======= -->
+    <!-- <section id="cta" class="cta"> -->
+     
+    <!-- </section> -->
+	<!-- End Cta Section -->
+
+    <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio skills pricing"> 
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Why shifting to Bugbounty?</h2>
+          <p></p>
+        </div>
+
+        <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
+          <li data-filter=".filter-app" class="filter-active">Bugbounty</li>
+          <li data-filter=".filter-web">Traditional</li>
+        </ul>
+
+        <div class="portfolio-container" data-aos="fade-up" data-aos-delay="200">
+
+          <div class="portfolio-item filter-app ">
+          
+            <div class="container" data-aos="fade-up">
+
+              <div class="row">
+                <div class="col-lg-6 d-flex align-items-center" data-aos="fade-right" data-aos-delay="100">
+                  <img src="{% static 'Home_Temp/assets/img/skills.png' %}" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-6 pt-4 pt-lg-0 content box" data-aos="fade-left" data-aos-delay="100">
+
+                  <ul>
+                  <li><i class="bx bx-check"></i><h5 style="color: #47b2e4;"> Crowd security researchers for one project  </h5></li>
+                  <li><i class="bx bx-check"></i><h5 style="color: #47b2e4;"> Varity of skills as testers </h5></li>
+                  <li><i class="bx bx-check"></i><h5 style="color: #47b2e4;"> Continuous pen testing </h5></li>
+                  <li><i class="bx bx-check"></i><h5 style="color: #47b2e4;"> Varity of tools and methodology from security researchers </h5></li>
+
+                </ul>
+                  <p class="font-italic">
+
+                  </p>
+      
+           
+      
+                </div>
+              </div>
+      
+            </div> <!-- end skills section -->
+
+          </div>
+
+          <div class="portfolio-item filter-web ">
+            <div class="container" data-aos="fade-up">
+
+              <div class="row">
+
+                <div class="col-lg-6 pt-4 pt-lg-0 content box" data-aos="fade-left" data-aos-delay="100">
+
+                  <ul>
+                  <li><i class="bx bx-x" style="color: grey;"></i><h5 > One or two testers for each project </h5></li>
+                  <li><i class="bx bx-x" style="color: grey;"></i><h5 > Limitation in security skills </h5></li>
+                  <li><i class="bx bx-x" style="color: grey;"></i><h5 > Periodic pen testing  </h5></li>
+                  <li><i class="bx bx-x" style="color: grey;"></i><h5 > One or two tools to be used  </h5></li>
+
+                </ul>
+                  <p class="font-italic">
+
+                  </p>
+      
+           
+      
+                </div>
+
+                <div class="col-lg-6 d-flex align-items-center" data-aos="fade-right" data-aos-delay="100">
+                  <img src="{% static 'Home_Temp/assets/img/hero-img.png' %}" class="img-fluid" alt="">
+                </div>
+                
+              </div>
+      
+            </div> <!-- end skills section -->
+          </div>
+
+        
+
+        </div>
+
+      </div>
+    
+     </section> 
+	<!-- End Portfolio Section -->
+
+    <!-- ======= Team Section ======= -->
+    <!-- <section id="team" class="team section-bg"> -->
+    
+    <!-- </section> -->
+	<!-- End Team Section -->
+
+    <!-- ======= Pricing Section ======= -->
+    <!-- <section id="pricing" class="pricing"> -->
+   
+    <!-- </section> -->
+	<!-- End Pricing Section -->
+
+    <!-- ======= Frequently Asked Questions Section ======= -->
+    <!-- <section id="faq" class="faq section-bg"> -->
+     
+    <!-- </section> -->
+	<!-- End Frequently Asked Questions Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Contact</h2>
+          <p>
+		  Please fill out the following form and we will get back to you shortly. For more
+			information please contact us.
+		  </p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-5 d-flex align-items-stretch">
+            <div class="info">
+              <div class="address">
+                <i class="icofont-google-map"></i>
+                <h4>Location:</h4>
+                <p>4th Floor, Bait Al Reem Building,
+				Alkhuwair Sultanate of Oman</p>
+              </div>
+
+              <div class="email">
+                <i class="icofont-envelope"></i>
+                <h4>Email:</h4>
+                <p>info@bugbounty.om
+				</p>
+              </div>
+
+              <div class="phone">
+                <i class="icofont-phone"></i>
+                <h4>Phone Number:</h4>
+                <p>+968 22507566</p>
+              </div>
+
+              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14624.427758350455!2d58.4374437!3d23.6004974!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x5ba594e9a85cd2ad!2sJEBEL%20AKHDAR%20DATA%20CENTER%20SAOC%20-%20Datamount!5e0!3m2!1sar!2som!4v1631962226388!5m2!1sar!2som" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
+            </div>
+
+          </div>
+
+          <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+            <form method="post" class="php-email-form">
+              {% csrf_token %}
+
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="name">Your Name</label>
+                  <input type="text" name="name" class="form-control" required/>
+                  <div class="validate"></div>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="name">Your Email</label>
+                  <input type="email" class="form-control" name="email" required/>
+                  <div class="validate"></div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="name">Subject</label>
+                <input type="text" class="form-control" name="subject" required />
+                <div class="validate"></div>
+              </div>
+              <div class="form-group">
+                <label for="name">Message</label>
+                <textarea class="form-control" name="message" rows="10" required></textarea>
+                <div class="validate"></div>
+              </div>
+              <div class="mb-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div>
+              <div class="text-center"><button type="submit">Send Message</button></div>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <!-- <div class="footer-newsletter"> -->
+      <!-- <div class="container"> -->
+        <!-- <div class="row justify-content-center"> -->
+          <!-- <div class="col-lg-6"> -->
+            <!-- <h4>Join Our Newsletter</h4> -->
+            <!-- <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p> -->
+            <!-- <form action="" method="post"> -->
+              <!-- <input type="email" name="email"><input type="submit" value="Subscribe"> -->
+            <!-- </form> -->
+          <!-- </div> -->
+        <!-- </div> -->
+      <!-- </div> -->
+    <!-- </div> -->
+
+    <!-- <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>Arsha</h3>
+            <p>
+              A108 Adam Street <br>
+              New York, NY 535022<br>
+              United States <br><br>
+              <strong>Phone:</strong> +1 5589 55488 55<br>
+              <strong>Email:</strong> info@example.com<br>
+            </p>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Social Networks</h4>
+            <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
+            <div class="social-links mt-3">
+              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div> -->
+
+    <!-- <div class="container footer-bottom clearfix">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Arsha</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+      </div>
+    </div>
+  </footer> -->
+  
+  <!-- End Footer -->
+  {% include 'footer.html' %}
+
+  <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
+  <div id="preloader"></div>
+
+  <!-- Vendor js' %} Files -->
+  <script src="{% static 'Home_Temp/assets/vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'Home_Temp/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'Home_Temp/assets/vendor/jquery.easing/jquery.easing.min.js' %}"></script>
+  <script src="{% static 'Home_Temp/assets/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'Home_Temp/assets/vendor/waypoints/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'Home_Temp/assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'Home_Temp/assets/vendor/venobox/venobox.min.js' %}"></script>
+  <script src="{% static 'Home_Temp/assets/vendor/owl.carousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'Home_Temp/assets/vendor/aos/aos.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'Home_Temp/assets/js/main.js' %}"></script>
+
+</body>
+
+</html>
